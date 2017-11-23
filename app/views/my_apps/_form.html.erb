@@ -1,0 +1,26 @@
+<%= form_for(@my_app) do |f| %>
+  <% if @my_app.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@my_app.errors.count, "error") %> prohibited this my_app from being saved:</h2>
+
+      <ul>
+      <% @my_app.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="input-field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="input-field">
+    <%= f.label :javascript_origins %>
+    <%= f.text_field :javascript_origins %>
+    <p style="margin:0px;padding:0px;font-size:12px;">Separa por comas los orígenes desde los que mandarás peticiones con AJAX</p>
+  </div>
+ 
+  <div style="margin-top:1.5em;">
+    <%= f.submit "Enviar", class:"btn" %>
+  </div>
+<% end %>

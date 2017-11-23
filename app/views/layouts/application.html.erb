@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PollApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<header>
+		<nav class="red accent-3">
+			<div class="nav-wrapper">
+				<ul class="hide-on-med-and-down">
+					<li>
+						<%= link_to "Inicio", "/" %>	
+					</li>
+					<% if user_signed_in? %>
+						<li>
+							<%= link_to "Nueva aplicación", new_my_app_path %>
+						</li>
+						<li>
+							<%= link_to "Cerrar sesión", "/logout", method: :delete %>
+						</li>
+					<%else%>
+						<li>
+							<%= link_to "Ingresar", "/auth/google_oauth2" %>
+						</li>
+					<%end%>
+					
+				</ul>
+				
+				
+			</div>
+		</nav>
+	</header>
+	<div class="container">
+		<div class="card big-padding">
+			<%= yield %>		
+		</div>
+	</div>
+	
+
+</body>
+</html>
